@@ -1,0 +1,87 @@
+site_name: 41 North
+theme:
+  name: material
+  logo: localassets/north_compass_icon_brown-211609.svg
+  favicon: localassets/favicon.svg
+  palette: 
+    # Palette toggle for light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: orange
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny 
+        name: Switch to dark mode
+    # Palette toggle for dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: orange
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Switch to light mode
+  
+  features:
+    - navigation.instant
+    - navigation.tabs
+    - search.suggest
+    - search.highlight
+    - navigation.indexes
+    - content.code.copy
+    - content.code.select
+    - content.tooltips
+    - content.footnote.tooltips
+    - toc.follow
+    - navigation.top
+markdown_extensions:
+  - admonition
+  - tables
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tilde
+  - attr_list
+  - footnotes
+  - toc:
+      permalink: ⚓︎
+      permalink_title: 
+      title: On this page
+      slugify: !!python/object/apply:pymdownx.slugs.slugify {kwds: {case: lower}}
+  - pymdownx.keys:
+      separator: +
+      strict: false
+      camel_case: false
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+plugins:
+  - git-revision-date-localized:
+      enable_creation_date: false
+      enabled: true
+      type: date
+      fallback_to_build_date: true
+      exclude:
+        - index.md
+        - contact/*
+        - help/*
+  - search
+  - awesome-pages
+  - typeset:
+      enabled: true
+  - privacy:
+      enabled: true
+      cache: false
+      cache_dir: .cache/plugins/privacy
+      log: true
+      assets: false
+      assets_fetch: false
+      assets_fetch_dir: assets/external
+      links: true
+      links_noopener: true
+      links_attr_map:
+        target: _blank
+copyright: Copyright &copy; 41 North Technologies. All rights reserved.
+extra_javascript:
+  - https://unpkg.com/tablesort@5.3.0/dist/tablesort.min.js
+  - javascripts/tablesort.js
