@@ -1,6 +1,6 @@
 # 41 North Policies
 
-Our policies and terms apply to everything built by [:material-compass-outline: 41 North](https://41n.co), including [Galaxy.sh](https://galaxy.sh), [StageLink Cloud](https://stagelink.cloud), with more always in the works.
+Our policies and terms apply to everything built by [:material-compass-outline: 41 North](https://41n.co), including [Galaxy.sh](https://galaxy.sh), [StageLink Cloud](https://stagelink.cloud), with more always in the works. When you use our products and services, you are agreeing to these policies and terms.
 
 ---
 
@@ -8,8 +8,9 @@ Our policies and terms apply to everything built by [:material-compass-outline: 
 -   Introduction (this page)
 -   [Terms of Service](terms.md)
 -   [Privacy Policy](privacy.md)
--   [Use Restrictions Policy](use-restrictions.md)
+-   [Acceptable Use Policy](aup.md)
 -   [Copyright Infringement Policy](copyright.md)
+-   [California Notice at Collection](ccpa.md)
 
 ---
 

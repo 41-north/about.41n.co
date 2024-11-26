@@ -1,1 +1,0 @@
-# Use Restrictions Policy
