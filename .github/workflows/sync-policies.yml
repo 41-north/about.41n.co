@@ -1,0 +1,96 @@
+name: Sync Policy Documents to 41-north/policies
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  sync-policies:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout source repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+        continue-on-error: false
+
+      - name: Check for changes in policies directory
+        id: check_changes
+        run: |
+          if ! git diff --name-only HEAD^ HEAD > changed_files.txt; then
+            echo "Error: Failed to get changed files"
+            exit 1
+          fi
+          if grep -q "docs/policies/" changed_files.txt; then
+            echo "changes_detected=true" >> $GITHUB_OUTPUT
+          else
+            echo "changes_detected=false" >> $GITHUB_OUTPUT
+          fi
+        continue-on-error: false
+
+      - name: Checkout policies repository
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: 41-north/policies
+          token: ${{ secrets.POLICIES_PAT }}
+          path: policies-repo
+        continue-on-error: false
+
+      - name: Copy changed policy files
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        run: |
+          exit_code=0
+          while IFS= read -r file; do
+            if [[ $file == docs/policies/* ]]; then
+              filename=$(basename "$file")
+              if ! cp "$file" "policies-repo/$filename"; then
+                echo "Error: Failed to copy $file"
+                exit_code=1
+              fi
+            fi
+          done < changed_files.txt
+          exit $exit_code
+        continue-on-error: false
+
+      - name: Commit and push changes
+        if: steps.check_changes.outputs.changes_detected == 'true'
+        run: |
+          cd policies-repo || exit 1
+          
+          # Configure git
+          if ! git config user.name "GitHub Actions Bot" || \
+             ! git config user.email "actions@github.com"; then
+            echo "Error: Failed to configure git"
+            exit 1
+          fi
+          
+          # Add changes
+          if ! git add .; then
+            echo "Error: Failed to stage changes"
+            exit 1
+          fi
+          
+          # Create commit message with current date
+          commit_date=$(date '+%Y-%m-%d')
+          commit_message="Automatic sync from about.41n.co repo on ${commit_date}"
+          
+          # Commit changes
+          if ! git commit -m "$commit_message"; then
+            echo "Error: Failed to commit changes"
+            exit 1
+          fi
+          
+          # Push changes
+          if ! git push origin main; then
+            echo "Error: Failed to push changes"
+            exit 1
+          fi
+        continue-on-error: false
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "::error::Policy sync workflow failed. Please check the logs for details."
+          exit 1
