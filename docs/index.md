@@ -30,11 +30,6 @@ This site is subject to interpretation. We do our best to be as clear as possibl
 
     Please see the [:material-pencil: Editing this Site](handbook/this-site/editing-this-site.md) section for more information.
 
-!!! danger "Controlled Documents"
-    If you come across pages/documents with this header, that indicates that they are a Controlled Document.
-
-    Inline with our internal policy as well as legal and contractual obligations, changes to [Controlled Documents](handbook/this-site/controlled-documents.md) must be approved and merged by an admin. Please discuss with @thhsh or another admin before making any changes.
-
 ## :fontawesome-brands-creative-commons: License
 This work is licensed under [CC BY-SA 4.0. :fontawesome-brands-creative-commons::fontawesome-brands-creative-commons-by::fontawesome-brands-creative-commons-sa:](https://creativecommons.org/licenses/by-sa/4.0/)
 
