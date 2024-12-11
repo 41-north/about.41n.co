@@ -3,9 +3,7 @@ theme:
   name: material
   logo: localassets/north_compass_icon_brown-211609.svg
   favicon: localassets/favicon.svg
-  font:
-    text: Poppins
-    code: Roboto Mono
+
   palette: 
     # Palette toggle for light mode
     - media: "(prefers-color-scheme: light)"
