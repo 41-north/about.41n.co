@@ -8,6 +8,11 @@ Pages on this site commonly visited, or that you may find useful:
 ---
 
 ## About
+### Public by Default
+Everything at 41 North is public by default. This allows a wider audience to take a peek inside, benefit from shared knowledge, and maybe even get involved. That's why we have this nice open wiki, and have the majority of our resources (this site included) [on GitHub](https://github.com/41-north/about.41n.co).
+
+For information that can't be public--that which would put the company or our users/members at risk--we do also have an internal site similar to this one, [:octicons-lock-24: internal.41n.co](https://internal.41n.co). (Internal links are indicated with the :octicons-lock-24: padlock icon.)
+
 ### Constantly Evolving
 !!! example "Everything is in Draft"
     Remember that this site, like most projects from 41 North, is always in draft and subject to change. When everything is in draft, contributions from team members as well as the wider community are welcomed.
